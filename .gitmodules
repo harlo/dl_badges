@@ -1,0 +1,3 @@
+[submodule "lib/shields"]
+	path = lib/shields
+	url = git@github.com:badges/shields.git
