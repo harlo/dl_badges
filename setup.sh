@@ -17,7 +17,7 @@ virtualenv venv
 source venv/bin/activate
 
 # Install python requirements
-pip install -r requirements.txt
+pip install -r dutils/requirements.txt
 
 python dl_badges.py init $1
 DID_INIT=$?

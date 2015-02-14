@@ -5,7 +5,9 @@ from dutils.conf import DUtilsKey, DUtilKeyDefaults, BASE_DIR
 from dutils.funcs import build_config, append_to_config, save_config, build_dockerfile
 
 APP_PORT = 8080
-EXPOSE_PORTS = [APP_PORT]
+API_PORT = 8888
+
+EXPOSE_PORTS = [APP_PORT, API_PORT]
 
 def init_d(with_config):
 	conf_keys = [
@@ -38,7 +40,8 @@ def init_d(with_config):
 		del config['USER_PWD']
 
 		directives = [
-			"export APP_PORT=%d" % config['APP_PORT']
+			"export APP_PORT=%d" % APP_PORT,
+			"export API_PORT=%d" % API_PORT
 		]
 
 		return (save_config(config) and build_bash_profile(directives, dest_d=os.path.join(BASE_DIR, "src")))
@@ -55,6 +58,33 @@ def build_d():
 	return (build_dockerfile("Dockerfile.commit", config) and generate_build_routine(config, "dl_badges"))
 
 def commit_d():
+	from sys import stdin
+
+	try:
+		port_bindings = json.loads(stdin.read())[0]['HostConfig']['PortBindings']
+		print port_bindings
+	except Exception as e:
+		print e, type(e)
+		return False
+
+	try:
+		res, config = append_to_config({
+			'APP_PORT' : int(port_bindings['%d/tcp' % APP_PORT][0]['HostPort']),
+			'API_PORT' : int(port_bindings['%d/tcp' % API_PORT][0]['HostPort'])
+			}, return_config=True)
+
+		if not res:
+			return False
+
+		routine = [
+			"sudo %(DOCKER_EXE)s rm %(IMAGE_NAME)s"
+		]
+
+		return build_routine([r % config for r in routine])
+
+	except Exception as e:
+		print e, type(e)
+
 	return False
 
 def update_d():

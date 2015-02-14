@@ -16,6 +16,7 @@ RUN echo "${USER} ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 ADD src /home/${USER}
 ADD lib/ home/${USER}/lib
 
+# INIT STUFF
 RUN chmod +x /home/${USER}/*.sh
 RUN chown -R ${USER}:${USER} /home/${USER}
 USER ${USER}

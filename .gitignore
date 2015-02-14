@@ -2,4 +2,8 @@
 *.pyc
 
 Dockerfile
+.routine.sh
+config.json
+
+venv/
 src/.bash_profile
