@@ -4,3 +4,9 @@
 
 [shields_gh]: https://github.com/badges/shields
 [shields_io]: http://shields.io/
+
+
+#### Requirements
+
+1.	docker
+1.	virtualenv
