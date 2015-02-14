@@ -41,7 +41,8 @@ def init_d(with_config):
 
 		directives = [
 			"export APP_PORT=%d" % APP_PORT,
-			"export API_PORT=%d" % API_PORT
+			"export API_PORT=%d" % API_PORT,
+			"export PKG_CONFIG_PATH=/usr/X11/lib/pkgconfig"
 		]
 
 		return (save_config(config) and build_bash_profile(directives, dest_d=os.path.join(BASE_DIR, "src")))

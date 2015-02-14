@@ -5,7 +5,7 @@ MAINTAINER harlo <harlo.holmes@gmail.com>
 RUN apt-get update
 
 # INSTALL NPM, PYTHON
-RUN apt-get install -yq libssl-dev nodejs npm python-dev python-pip
+RUN apt-get install -yq libssl-dev nodejs npm python-dev python-pip libcairo2-dev
 
 # SET UP USER
 RUN useradd -ms /bin/bash -p $(openssl passwd -1 ${USER_PWD}) ${USER}
