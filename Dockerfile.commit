@@ -1,2 +1,5 @@
-FROM dl_badges:init
+FROM ${STUB_IMAGE}
 MAINTAINER harlo <harlo.holmes@gmail.com>
+
+CMD ["/bin/bash", "./run.sh"]
+EXPOSE ${EXPOSE_PORTS}

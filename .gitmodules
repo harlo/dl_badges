@@ -1,3 +1,6 @@
 [submodule "lib/shields"]
 	path = lib/shields
 	url = git@github.com:badges/shields.git
+[submodule "dutils"]
+	path = dutils
+	url = git@github.com:harlo/dutils.git

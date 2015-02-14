@@ -19,7 +19,7 @@ source venv/bin/activate
 # Install python requirements
 pip install -r requirements.txt
 
-python setup.py init $1
+python dl_badges.py init $1
 DID_INIT=$?
 
 if ([ $DID_INIT -eq 0 ])
@@ -30,7 +30,7 @@ else
 	do_exit
 fi
 
-python setup.py build
+python dl_badges.py build
 DID_BUILD=$?
 
 if ([ $DID_BUILD -eq 0 ])
@@ -41,7 +41,7 @@ else
 	do_exit
 fi
 
-python setup.py commit
+python dl_badges.py commit
 DID_COMMIT=$?
 
 if ([ $DID_COMMIT -eq 0 ])
