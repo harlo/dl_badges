@@ -1,5 +1,5 @@
-[submodule "lib/shields"]
-	path = lib/shields
+[submodule "src/shields"]
+	path = src/shields
 	url = git@github.com:badges/shields.git
 [submodule "dutils"]
 	path = dutils

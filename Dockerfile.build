@@ -2,4 +2,4 @@ FROM ${STUB_IMAGE}
 MAINTAINER harlo <harlo.holmes@gmail.com>
 
 CMD ["/bin/bash", "./run.sh"]
-EXPOSE ${EXPOSE_PORTS}
+EXPOSE ${DEFAULT_PORTS}
